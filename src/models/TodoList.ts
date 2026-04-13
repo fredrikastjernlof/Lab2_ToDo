@@ -16,6 +16,18 @@ export class TodoList {
         this.todos = this.storage.loadTodos();
     }
 
+    //Lägg till todos
+    public addTodo(task: string, priority: number): boolean {
+        const trimmedTask = task.trim(); //Tar bort mellanslag
+
+        // Tom input blir ogiltig och returnerar false
+        if (trimmedTask === '') {
+            return false;
+        }
+
+        return true;
+    }
+
     //Läser todos
     public getTodos(): Todo[] {
         return this.todos;
