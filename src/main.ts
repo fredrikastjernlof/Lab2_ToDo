@@ -1,18 +1,10 @@
 import './style.css';
 import { TodoStorage } from './services/TodoStorage';
+import { TodoList } from './models/TodoList';
 
 const storage = new TodoStorage();
+const todoList = new TodoList (storage);
 
-// Testdata
-const testTodos = [
-  { task: 'Test 1', completed: false, priority: 1 },
-  { task: 'Test 2', completed: true, priority: 2 },
-];
-
-// Spara
-storage.saveTodos(testTodos);
-console.log('Sparat!');
-
-// Ladda
-const loadedTodos = storage.loadTodos();
-console.log('Laddat:', loadedTodos);
+// Kolla vad som laddas från localStorage
+console.log('TodoList:', todoList);
+console.log('Direkt från storage:', storage.loadTodos());
