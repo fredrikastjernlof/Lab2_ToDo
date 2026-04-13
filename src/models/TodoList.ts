@@ -25,6 +25,20 @@ export class TodoList {
             return false;
         }
 
+        // Prioritering måste vara ett heltal och får ej vara mindre än 1 eller högre än 3. 
+        if (!Number.isInteger(priority) || priority < 1 || priority > 3) {
+            return false;
+        }
+
+        const newTodo: Todo = {
+            task: trimmedTask,
+            completed: false,
+            priority: priority,
+        };
+
+        this.todos.push(newTodo);
+        this.storage.saveTodos(this.todos);
+
         return true;
     }
 
