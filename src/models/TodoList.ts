@@ -15,4 +15,9 @@ export class TodoList {
         // Ladda sparade Todos direkt när klassen skapas
         this.todos = this.storage.loadTodos();
     }
+
+    //Läser todos
+    public getTodos(): Todo[] {
+        return this.todos;
+    }
 }
