@@ -17,9 +17,16 @@ export function renderTodos(
     // Loopa genom varje ToDo
     sortedTodos.forEach((todo) => {
         const li = document.createElement("li");
+        li.classList.add("todo-item");
         li.textContent = `${todo.task} (prio: ${todo.priority})`;
 
         const targetList = todo.completed ? completedListElement : todoListElement;
+
+        if (todo.completed) {
+            li.classList.add("completed");
+        } else {
+            li.classList.add(`priority-${todo.priority}`);
+        }
 
         if (!todo.completed) {
             const button = document.createElement("button");

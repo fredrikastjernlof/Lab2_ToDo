@@ -1,0 +1,75 @@
+@use "../base/variables" as *;
+
+.todo-sections {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.todo-sections section {
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: $radius;
+  padding: 1rem;
+  box-shadow: $shadow;
+}
+
+.todo-sections h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+#todo-list,
+#completed-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .todo-sections {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+/*---- ToDo´s ----*/
+
+.todo-item {
+  padding: 1rem;
+  min-height: 120px;
+
+  border-radius: 4px;
+  box-shadow: $shadow;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+
+  color: #222;
+  font-weight: 600;
+}
+
+/*---- Färger ----*/
+
+.priority-1 {
+  background: $todo-high;
+}
+
+.priority-2 {
+  background: $todo-medium;
+}
+
+.priority-3 {
+  background: $todo-low;
+}
+
+.completed {
+  background: $todo-completed;
+}
+
+.todo-item button {
+  align-self: flex-start;
+}
