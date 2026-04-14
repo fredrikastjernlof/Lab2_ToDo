@@ -18,7 +18,21 @@ export function renderTodos(
     sortedTodos.forEach((todo) => {
         const li = document.createElement("li");
         li.classList.add("todo-item");
-        li.textContent = `${todo.task} (prio: ${todo.priority})`;
+        const priorityLabel = document.createElement("p");
+
+        if (todo.priority === 1) {
+            priorityLabel.textContent = "Prioritet: Hög";
+        } else if (todo.priority === 2) {
+            priorityLabel.textContent = "Prioritet: Medium";
+        } else {
+            priorityLabel.textContent = "Prioritet: Låg";
+        }
+
+        const taskText = document.createElement("p");
+        taskText.textContent = todo.task;
+
+        li.appendChild(priorityLabel);
+        li.appendChild(taskText);
 
         const targetList = todo.completed ? completedListElement : todoListElement;
 
