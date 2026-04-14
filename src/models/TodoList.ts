@@ -42,8 +42,20 @@ export class TodoList {
         return true;
     }
 
+    //Markera todos som färdiga
+    public markTodoCompleted(todoIndex: number): void {
+        if (todoIndex < 0 || todoIndex >= this.todos.length) {
+            return;
+        }
+
+        this.todos[todoIndex].completed = true;
+        this.storage.saveTodos(this.todos);
+    }
+
     //Läser todos
     public getTodos(): Todo[] {
         return this.todos;
     }
 }
+
+
