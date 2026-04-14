@@ -56,6 +56,16 @@ export class TodoList {
     public getTodos(): Todo[] {
         return this.todos;
     }
+
+    // Radera todo
+    public deleteTodo(index: number): void {
+        if (index < 0 || index >= this.todos.length) {
+            return;
+        }
+
+        this.todos.splice(index, 1);
+        this.storage.saveTodos(this.todos);
+    }
 }
 
 

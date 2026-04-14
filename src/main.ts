@@ -11,18 +11,23 @@ const taskInput = document.getElementById("task-input") as HTMLInputElement;
 const priorityInput = document.getElementById("priority-input") as HTMLSelectElement;
 const errorMessage = document.getElementById("error-message") as HTMLParagraphElement;
 const todoListElement = document.getElementById("todo-list") as HTMLUListElement;
+const completedListElement = document.getElementById("completed-list") as HTMLUListElement;
+const clearCompletedButton = document.getElementById("clear-completed-btn") as HTMLButtonElement;
 
 function updateUI() {
-  renderTodos(todoList.getTodos(), todoListElement, (index) => {
-
-    console.log("Klickade på index:", index);
-
-    todoList.markTodoCompleted(index);
-
-    console.log("Efter klick:", todoList.getTodos());
-    
-    updateUI();
-  });
+  renderTodos(
+    todoList.getTodos(),
+    todoListElement,
+    completedListElement,
+    (index) => {
+      todoList.markTodoCompleted(index);
+      updateUI();
+    },
+    (index) => {
+      todoList.deleteTodo(index);
+      updateUI();
+    }
+  );
 }
 
 updateUI();
