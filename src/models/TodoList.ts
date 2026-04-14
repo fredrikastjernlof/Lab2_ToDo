@@ -66,7 +66,7 @@ export class TodoList {
         this.storage.saveTodos(this.todos);
     }
 
-    // Rensa lista med largjorda todos
+    // Rensa lista med klargjorda todos
     public clearCompletedTodos(): void {
         this.todos = this.todos.filter((todo) => !todo.completed);
         this.storage.saveTodos(this.todos);

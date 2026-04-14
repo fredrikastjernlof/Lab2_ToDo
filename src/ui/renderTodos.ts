@@ -2,11 +2,11 @@ import type { Todo } from "../models/Todo";
 
 // Rendera lista med ToDo´s 
 export function renderTodos(
-  todos: Todo[],
-  todoListElement: HTMLUListElement,
-  completedListElement: HTMLUListElement,
-  onTodoCompleted: (index: number) => void,
-  onTodoDeleted: (index: number) => void
+    todos: Todo[],
+    todoListElement: HTMLUListElement,
+    completedListElement: HTMLUListElement,
+    onTodoCompleted: (index: number) => void,
+    onTodoDeleted: (index: number) => void
 ): void {
 
     todoListElement.innerHTML = "";
@@ -46,4 +46,22 @@ export function renderTodos(
 
         targetList.appendChild(li);
     });
+
+    // Om inga aktiva todos finns
+    if (todoListElement.children.length === 0) {
+        const li = document.createElement("li");
+        li.classList.add("empty-state");
+        li.textContent = "Du har inte lagt till några ToDo´s ännu";
+        todoListElement.appendChild(li);
+    }
+
+    // Om inga klara todos finns
+    if (completedListElement.children.length === 0) {
+        const li = document.createElement("li");
+        li.classList.add("empty-state");
+        li.textContent = "Inga slutförda ToDo´s än";
+        completedListElement.appendChild(li);
+    }
+
 }
+

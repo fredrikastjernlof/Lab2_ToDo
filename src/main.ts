@@ -1,4 +1,4 @@
-import './style.css';
+import './styles/main.scss';
 import { TodoStorage } from './services/TodoStorage';
 import { TodoList } from './models/TodoList';
 import { renderTodos } from './ui/renderTodos';
