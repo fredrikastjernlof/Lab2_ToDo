@@ -93,7 +93,7 @@ Applikationen är också anpassad för olika skärmstorlekar med responsiv layou
 
 Webbplatsen är publicerad via Render: 
 
-[Öppna webbplats](Länk läggs till efter publicering)
+[Öppna webbplats](https://lab2-todo.onrender.com/)
 
 
 ## Det här tar jag med mig från uppgiften ✅
