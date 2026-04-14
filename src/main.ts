@@ -14,17 +14,19 @@ const todoListElement = document.getElementById("todo-list") as HTMLUListElement
 const completedListElement = document.getElementById("completed-list") as HTMLUListElement;
 const clearCompletedButton = document.getElementById("clear-completed-btn") as HTMLButtonElement;
 
+
+
 function updateUI() {
   renderTodos(
     todoList.getTodos(),
     todoListElement,
     completedListElement,
-    (index) => {
-      todoList.markTodoCompleted(index);
+    (id) => {
+      todoList.markTodoCompleted(id);
       updateUI();
     },
-    (index) => {
-      todoList.deleteTodo(index);
+    (id) => {
+      todoList.deleteTodo(id);
       updateUI();
     }
   );
@@ -32,6 +34,7 @@ function updateUI() {
 
 updateUI();
 
+// Lägg till todo
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -68,4 +71,10 @@ form.addEventListener("submit", (event) => {
     updateUI();
   }
 
-})
+});
+
+// Rensa hela listan med klara todos
+clearCompletedButton.addEventListener("click", () => {
+  todoList.clearCompletedTodos();
+  updateUI();
+});

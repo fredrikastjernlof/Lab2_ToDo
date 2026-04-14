@@ -31,6 +31,7 @@ export class TodoList {
         }
 
         const newTodo: Todo = {
+            id: Date.now(),
             task: trimmedTask,
             completed: false,
             priority: priority,
@@ -43,12 +44,14 @@ export class TodoList {
     }
 
     //Markera todos som färdiga
-    public markTodoCompleted(todoIndex: number): void {
-        if (todoIndex < 0 || todoIndex >= this.todos.length) {
+    public markTodoCompleted(id: number): void {
+        const todoToMark = this.todos.find((todo) => todo.id === id);
+
+        if (!todoToMark) {
             return;
         }
 
-        this.todos[todoIndex].completed = true;
+        todoToMark.completed = true;
         this.storage.saveTodos(this.todos);
     }
 
@@ -57,13 +60,15 @@ export class TodoList {
         return this.todos;
     }
 
-    // Radera todo
-    public deleteTodo(index: number): void {
-        if (index < 0 || index >= this.todos.length) {
-            return;
-        }
+    // Radera klargjord todo
+    public deleteTodo(id: number): void {
+        this.todos = this.todos.filter((todo) => todo.id !== id);
+        this.storage.saveTodos(this.todos);
+    }
 
-        this.todos.splice(index, 1);
+    // Rensa lista med largjorda todos
+    public clearCompletedTodos(): void {
+        this.todos = this.todos.filter((todo) => !todo.completed);
         this.storage.saveTodos(this.todos);
     }
 }

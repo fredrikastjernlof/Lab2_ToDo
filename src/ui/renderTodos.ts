@@ -12,10 +12,12 @@ export function renderTodos(
     todoListElement.innerHTML = "";
     completedListElement.innerHTML = "";
 
+    const sortedTodos = [...todos].sort((a, b) => a.priority - b.priority);
+
     // Loopa genom varje ToDo
-    todos.forEach((todo, index) => {
+    sortedTodos.forEach((todo) => {
         const li = document.createElement("li");
-        li.textContent = `${todo.task} (prio: ${todo.priority}) ${todo.completed ? "✅" : ""}`;
+        li.textContent = `${todo.task} (prio: ${todo.priority})`;
 
         const targetList = todo.completed ? completedListElement : todoListElement;
 
@@ -24,18 +26,19 @@ export function renderTodos(
             button.textContent = "Klar";
 
             button.addEventListener("click", () => {
-                onTodoCompleted(index);
+                onTodoCompleted(todo.id);
             });
 
             li.appendChild(button);
         }
 
+        // Radera klargjord todo
         if (todo.completed) {
             const deleteButton = document.createElement("button");
             deleteButton.textContent = "Ta bort";
 
             deleteButton.addEventListener("click", () => {
-                onTodoDeleted(index);
+                onTodoDeleted(todo.id);
             });
 
             li.appendChild(deleteButton);
