@@ -7,8 +7,7 @@
 
 .todo-sections section {
     background: rgba(255, 255, 255, 0.35);
-    border-radius: $radius;
-    padding: 1rem;
+    padding: clamp(0.25rem, 4vw, 0.75rem);
     box-shadow: $shadow;
 }
 
@@ -45,7 +44,7 @@
     padding: 0;
 
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1rem;
 }
 
@@ -100,14 +99,11 @@
     background: $todo-completed;
 }
 
-.todo-item button {
-    align-self: flex-start;
-}
-
 /*---- Knapp ----*/
 
 .todo-item button {
     align-self: flex-start;
+    margin-top: 0.5rem;
     padding: 0.5rem 0.9rem;
     border: none;
     border-radius: 6px;
