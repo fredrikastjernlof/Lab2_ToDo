@@ -62,9 +62,6 @@ form.addEventListener("submit", (event) => {
     errorMessage.textContent = "";
   }
 
-  console.log("Added:", isAdded);
-  console.log("ToDo´s now:", todoList.getTodos());
-
   if (isAdded) {
     taskInput.value = "";
     priorityInput.value = "";

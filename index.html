@@ -1,42 +1,59 @@
 <!doctype html>
 <html lang="sv">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Min ToDo-lista</title>
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Min ToDo-lista</title>
+</head>
+
+<body>
+
+  <div class="container">
+
     <h1>ToDo App</h1>
+    <main>
+      <div class="form-section">
+        <form id="todo-form">
 
-    <form id="todo-form">
+          <label for="task-input">Att göra:</label>
+          <input type="text" id="task-input" placeholder="Lägg till en uppgift" />
 
-      <label for="task-input">Att göra:</label>
-      <input type="text" id="task-input" placeholder="Lägg till en uppgift"/>
+          <label for="priority-input">Välj prioritet:</label>
+          <select id="priority-input">
+            <option value="" selected>Välj prioritet</option>
+            <option value="1">Hög</option>
+            <option value="2">Medium</option>
+            <option value="3">Låg</option>
+          </select>
 
-      <label for="priority-input">Välj prioritet:</label>
-      <select id="priority-input">
-        <option value="" selected>Välj prioritet</option>
-        <option value="1">Hög</option>
-        <option value="2">Medium</option>
-        <option value="3">Låg</option>
-      </select>
+          <button type="submit">Lägg till</button>
 
-      <button type="submit">Lägg till</button>
+        </form>
+      </div>
 
-    </form>
+      <div id="errors">
+        <p id="error-message" aria-live="polite"></p>
+      </div>
 
-    <div id="errors">
-      <p id="error-message"></p>
-    </div>
+      <div class="todo-sections">
 
-    <h2>Att göra</h2>
-<ul id="todo-list"></ul>
+        <section>
+          <h2>Att göra</h2>
+          <ul id="todo-list"></ul>
+        </section>
 
-<h2>Klara</h2>
-<ul id="completed-list"></ul>
+        <section>
+          <h2>Slutförda</h2>
+          <ul id="completed-list"></ul>
+        </section>
 
-<button id="clear-completed-btn" type="button">Rensa listan</button>
-  
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+      </div>
+
+      <button id="clear-completed-btn" type="button">Rensa listan</button>
+    </main>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
