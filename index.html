@@ -6,6 +6,31 @@
     <title>Min ToDo-lista</title>
   </head>
   <body>
+    <h1>ToDo App</h1>
+
+    <form id="todo-form">
+
+      <label for="task-input">Att göra:</label>
+      <input type="text" id="task-input" placeholder="Lägg till en uppgift"/>
+
+      <label for="priority-input">Välj prioritet:</label>
+      <select id="priority-input">
+        <option value="" selected>Välj prioritet</option>
+        <option value="1">Hög</option>
+        <option value="2">Medium</option>
+        <option value="3">Låg</option>
+      </select>
+
+      <button type="submit">Lägg till</button>
+
+    </form>
+
+    <div id="errors">
+      <p id="error-message"></p>
+    </div>
+
+    <ul id="todo-list"></ul>
+  
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

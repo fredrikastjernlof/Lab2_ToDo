@@ -5,12 +5,43 @@ import { TodoList } from './models/TodoList';
 const storage = new TodoStorage();
 const todoList = new TodoList (storage);
 
-// Kolla vad som laddas från localStorage
-console.log('getTodos():', todoList.getTodos());
-console.log('Lägg till giltig todo:', todoList.addTodo('Plugga TS', 1));
-console.log('Lägg till tom todo:', todoList.addTodo(' ', 2));
-console.log('Ogiltig prioritering:', todoList.addTodo('Test', 5));
-console.log('Efter addTodo:', todoList.getTodos());
+const form = document.getElementById("todo-form") as HTMLFormElement;
+const taskInput = document.getElementById("task-input") as HTMLInputElement;
+const priorityInput = document.getElementById("priority-input") as HTMLSelectElement;
+const errorMessage = document.getElementById("error-message") as HTMLParagraphElement;
 
-todoList.markTodoCompleted(2);
-console.log("Efter markTodoCompleted:", todoList.getTodos());
+form.addEventListener("submit", (event)=> {
+  event.preventDefault();
+
+  const task = taskInput.value;
+  const priority = Number(priorityInput.value);
+
+  const isAdded = todoList.addTodo(task, priority);
+
+
+ // Tar bort gamla error-klasser först
+taskInput.classList.remove("input-error");
+priorityInput.classList.remove("input-error");
+
+if (!isAdded) {
+  errorMessage.textContent = "Kontrollera att alla fält är korrekt ifyllda.";
+
+  if (task.trim() === "") {
+    taskInput.classList.add("input-error");
+  }
+
+  if (!priority || priority < 1 || priority > 3) {
+    priorityInput.classList.add("input-error");
+  }
+} else {
+  errorMessage.textContent = "";
+}
+
+  console.log("Added:", isAdded);
+  console.log("ToDo´s now:", todoList.getTodos());
+
+  if (isAdded) {
+    taskInput.value = "";
+    priorityInput.value = "";
+  }
+})
